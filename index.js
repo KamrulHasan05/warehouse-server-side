@@ -39,7 +39,7 @@ async function run() {
             const product = await cycleCollection.findOne(query);
             res.send(product)
         });
-
+        // product update by id
         app.put('/product/:id', async (req, res) => {
             const id = req.params.id;
             const updateProduct = req.body;
