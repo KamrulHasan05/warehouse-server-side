@@ -18,21 +18,21 @@ async function run() {
     try {
         await client.connect();
         const cycleCollection = client.db('cycle').collection('cycle-details');
-
+        // 6 product load in home page
         app.get('/product', async (req, res) => {
             const query = {};
             const cycleData = cycleCollection.find(query);
             const result = await cycleData.limit(6).toArray();
             res.send(result);
         });
-
+        // all product load
         app.get('/allProducts', async (req, res) => {
             const query = {};
             const cycleData = cycleCollection.find(query);
             const result = await cycleData.toArray();
             res.send(result);
         });
-
+        // product load by id
         app.get('/product/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
