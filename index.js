@@ -58,7 +58,7 @@ async function run() {
             const result = await cycleCollection.updateOne(quarry, updateDetails, option);
             res.send(result);
         });
-
+        // delete product
         app.delete('/product/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
