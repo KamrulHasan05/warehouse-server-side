@@ -65,7 +65,7 @@ async function run() {
             const result = await cycleCollection.deleteOne(query);
             res.send(result);
         })
-
+        // add product
         app.post('/product', async (req, res) => {
             const productBody = req.body;
             const result = await cycleCollection.insertOne(productBody);
