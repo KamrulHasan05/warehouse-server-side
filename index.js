@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express();
 const port = process.env.PORT || 5000;
@@ -73,6 +74,12 @@ async function run() {
             res.send(result);
         });
 
+        app.get('/myitems', async (req, res) => {
+            const email = req.query.email;
+            const myItemData = cycleCollection.find({ email });
+            const result = await myItemData.toArray();
+            res.send(result);
+        })
     }
     finally {
         //  await client.close();
